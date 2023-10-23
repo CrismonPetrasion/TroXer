@@ -25,13 +25,27 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
+Rayfield:Notify({
+   Title = "Nofitication",
+   Content = "Credits ultramegasuperpuperdupergul for bypass and helping",		
+   Duration = 6.5,
+   Image = 4483362458,
+})
+
+local InfoTab = Window:CreateTab("Info", 4483362458)
 local MainTab = Window:CreateTab("Main", 4483362458) -- Title, Image
 local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
 local TeleportTab = Window:CreateTab("Teleports", 4483362458) -- Title, Image
 local OtherHubTab = Window:CreateTab("Other Hub", 4483362458) -- Title, Image
 
 function Script()
+   local InfoLabel = InfoTab:CreateLabel("Credits:")
+   local InfoLabel2 = InfoTab:CreateLabel("Owner: ArteeSo")
+   local InfoLabel3 = InfoTab:CreateLabel("Lead Developers: KyKyRyZoV, Crimson")
+      
+   
    local Label = MainTab:CreateLabel("Ingridients")
+   
 
    local Button = MainTab:CreateButton({
    Name = "Elder Wood +5",
@@ -183,15 +197,49 @@ local Button13 = OtherHubTab:CreateButton({
     end,
 })
 
+local Label2 = MainTab:CreateLabel("Misc")
+
+local AntiVoidToogle = MainTab:CreateToggle({
+   Name = "Anti-Void",
+   CurrentValue = true,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+      if Value == false then
+          Value = true
+          local Part = Instance.new("Part", workspace)
+          Part.Name = "AntiVoid"
+          Part.CFrame = CFrame.new(0,-7.5,0)
+          Part.Size = Vector3.new(1000,0,1000)
+          Part.Anchored = true
+          Part.Transparency = 0.8
+      else
+          Value = false  
+          local Destroyer = workspace.AntiVoid:Destroy()
+      end
+   end,
+})
+
 local WalkSpeedSlider = PlayerTab:CreateSlider({
    Name = "Walk Speed",
-   Range = {0, 45},
+   Range = {0, 250},
    Increment = 10,
    Suffix = "WalkSpeed",
    CurrentValue = 10,
-   Flag = "SliderFlag", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
-      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   local bypass;
+     bypass = hookmetamethod(game, "__namecall", function(method, ...) 
+   if getnamecallmethod() == "FireServer" and method == game.ReplicatedStorage.Ban then
+      return
+   elseif getnamecallmethod() == "FireServer" and method == game.ReplicatedStorage.AdminGUI then
+      return
+   elseif getnamecallmethod() == "FireServer" and method == game.ReplicatedStorage.WalkSpeedChanged then
+      return
+end
+   return bypass(method, ...)
+end)
+
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
    end,
 })
 
@@ -201,7 +249,7 @@ local JumpPowerSlider = PlayerTab:CreateSlider({
    Increment = 10,
    Suffix = "JumpPower",
    CurrentValue = 10,
-   Flag = "SliderFlag2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Flag = "Slider2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
        game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
@@ -213,7 +261,7 @@ local TeleportDropDown = TeleportTab:CreateDropdown({
    Options = {"Brazil","Plate", "Main Island", "Moai Island", "Slapple Island"},
    CurrentOption = {"Nothing"},
    MultipleOptions = false,
-   Flag = "TeleportDropDown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Option, Player:Player)
       if Option == "Brazil" then
          local Brazil = game.Workspace.Lobby.brazil.portal
