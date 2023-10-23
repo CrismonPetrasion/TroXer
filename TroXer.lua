@@ -30,8 +30,7 @@ local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
 local TeleportTab = Window:CreateTab("Teleports", 4483362458) -- Title, Image
 local OtherHubTab = Window:CreateTab("Other Hub", 4483362458) -- Title, Image
 
-function Script()
-   local Label = MainTab:CreateLabel("Ingridients")
+local Label = MainTab:CreateLabel("Ingridients")
 
    local Button = MainTab:CreateButton({
    Name = "Elder Wood +5",
@@ -43,7 +42,6 @@ function Script()
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button2 = MainTab:CreateButton({
    Name = "Blue Crystal +5",
    Callback = function()
@@ -54,7 +52,6 @@ local Button2 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button3 = MainTab:CreateButton({
    Name = "Autumn Spout +5",
    Callback = function()
@@ -65,7 +62,6 @@ local Button3 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button4 = MainTab:CreateButton({
    Name = "Red Crystal +5",
    Callback = function()
@@ -76,7 +72,6 @@ local Button4 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button5 = MainTab:CreateButton({
    Name = "Hazel Lily +5",
    Callback = function()
@@ -87,7 +82,6 @@ local Button5 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button6 = MainTab:CreateButton({
    Name = "Lamp Grass +5",
    Callback = function()
@@ -98,7 +92,6 @@ local Button6 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button7 = MainTab:CreateButton({
    Name = "Plane Flower +5",
    Callback = function()
@@ -109,7 +102,6 @@ local Button7 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button8 = MainTab:CreateButton({
    Name = "Fire Flower +5",
    Callback = function()
@@ -120,7 +112,6 @@ local Button8 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button9 = MainTab:CreateButton({
    Name = "Mushroom +5",
    Callback = function()
@@ -131,7 +122,6 @@ local Button9 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button10 = MainTab:CreateButton({
    Name = "Glowing Mushroom +5",
    Callback = function()
@@ -142,7 +132,6 @@ local Button10 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button11 = MainTab:CreateButton({
    Name = "Winter Rose +5",
    Callback = function()
@@ -153,7 +142,6 @@ local Button11 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button12 = MainTab:CreateButton({
    Name = "Dark Root +5",
    Callback = function()
@@ -164,7 +152,6 @@ local Button12 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button12 = MainTab:CreateButton({
    Name = "Blood Rose +5",
    Callback = function()
@@ -175,14 +162,12 @@ local Button12 = MainTab:CreateButton({
     game:GetService("ReplicatedStorage"):WaitForChild("AlchemistEvent"):FireServer(unpack(args))
    end,
 })
-
 local Button13 = OtherHubTab:CreateButton({
     Name = "KyKyRyZoV Hub"
     Callback = function()
       loadstring(game:HttpGet("https://raw.githubusercontent.com/KykyryzoB/KykyryzoB-Hub-SB/main/KykryzoB.lua"))()
     end,
 })
-
 local WalkSpeedSlider = PlayerTab:CreateSlider({
    Name = "Walk Speed",
    Range = {0, 45},
@@ -194,7 +179,6 @@ local WalkSpeedSlider = PlayerTab:CreateSlider({
       game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
    end,
 })
-
 local JumpPowerSlider = PlayerTab:CreateSlider({
    Name = "Jump Power",
    Range = {0, 250},
@@ -207,7 +191,6 @@ local JumpPowerSlider = PlayerTab:CreateSlider({
        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
    end,
 })
-
 local TeleportDropDown = TeleportTab:CreateDropdown({
    Name = "Teleports",
    Options = {"Brazil","Plate", "Main Island", "Moai Island", "Slapple Island"},
@@ -251,8 +234,3 @@ local TeleportDropDown = TeleportTab:CreateDropdown({
       end
    end,
 })
-end
-
-if game.PlaceId == 6403373529 then
-   Script()
-end
