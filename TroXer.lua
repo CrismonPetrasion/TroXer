@@ -31,8 +31,8 @@ local TeleportTab = Window:CreateTab("Teleports", 4483362458) -- Title, Image
 local OtherHubTab = Window:CreateTab("Other Hub", 4483362458) -- Title, Image
 
 local Label = MainTab:CreateLabel("Ingridients")
-
-   local Button = MainTab:CreateButton({
+   
+local Button = MainTab:CreateButton({
    Name = "Elder Wood +5",
    Callback = function()
     local args = {
@@ -163,7 +163,7 @@ local Button12 = MainTab:CreateButton({
    end,
 })
 local Button13 = OtherHubTab:CreateButton({
-    Name = "KyKyRyZoV Hub"
+    Name = "KyKyRyZoV Hub",
     Callback = function()
       loadstring(game:HttpGet("https://raw.githubusercontent.com/KykyryzoB/KykyryzoB-Hub-SB/main/KykryzoB.lua"))()
     end,
@@ -234,3 +234,4 @@ local TeleportDropDown = TeleportTab:CreateDropdown({
       end
    end,
 })
+end
